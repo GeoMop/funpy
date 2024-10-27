@@ -1,6 +1,6 @@
 import pytest
 
-from joblib._utils import eval_expr
+from funpy.joblib._utils import eval_expr
 
 
 @pytest.mark.parametrize(

@@ -1,9 +1,9 @@
 import mmap
 
-from joblib.backports import make_memmap, concurrency_safe_rename
-from joblib.test.common import with_numpy
-from joblib.testing import parametrize
-from joblib import Parallel, delayed
+from funpy.joblib.backports import make_memmap, concurrency_safe_rename
+from _test_common import with_numpy, with_parallel
+from funpy.joblib.testing import parametrize
+#from funpy.joblib import Parallel, delayed
 
 
 @with_numpy
@@ -14,7 +14,7 @@ def test_memmap(tmpdir):
     memmap_obj = make_memmap(fname, shape=size, mode='w+', offset=offset)
     assert memmap_obj.offset == offset
 
-
+@with_parallel
 @parametrize('dst_content', [None, 'dst content'])
 @parametrize('backend', [None, 'threading'])
 def test_concurrency_safe_rename(tmpdir, dst_content, backend):

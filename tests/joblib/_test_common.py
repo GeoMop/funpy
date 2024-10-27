@@ -6,8 +6,7 @@ import gc
 import sys
 import sysconfig
 
-from joblib._multiprocessing_helpers import mp
-from joblib.testing import SkipTest, skipif
+from funpy.joblib.testing import SkipTest, skipif
 
 try:
     import lz4
@@ -72,9 +71,9 @@ def force_gc_pypy():
         gc.collect()
         gc.collect()
 
+with_parallel = skipif(True, reason="Parallel part removed in funpy.")
 
-with_multiprocessing = skipif(
-    mp is None, reason='Needs multiprocessing to run.')
+with_multiprocessing = skipif(True, reason='Needs multiprocessing to run.')
 
 
 with_dev_shm = skipif(

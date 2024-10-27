@@ -11,11 +11,11 @@ import time
 
 import pytest
 
-from joblib.testing import parametrize, timeout
-from joblib.test.common import with_multiprocessing
-from joblib.backports import concurrency_safe_rename
-from joblib import Parallel, delayed
-from joblib._store_backends import (
+from funpy.joblib.testing import parametrize, timeout
+from _test_common import with_multiprocessing, with_parallel
+from funpy.joblib.backports import concurrency_safe_rename
+#from funpy.joblib import Parallel, delayed
+from funpy.joblib._store_backends import (
     concurrency_safe_write,
     FileSystemStoreBackend,
     CacheWarning,
@@ -48,7 +48,7 @@ def concurrency_safe_write_rename(to_write, filename, write_func):
                                                 filename, write_func)
     concurrency_safe_rename(temporary_filename, filename)
 
-
+@with_parallel
 @timeout(0)  # No timeout as this test can be long
 @with_multiprocessing
 @parametrize('backend', ['multiprocessing', 'loky', 'threading'])

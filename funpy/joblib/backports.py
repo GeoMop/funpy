@@ -134,10 +134,13 @@ try:
                        shape=shape, order=order)
         if LooseVersion(np.__version__) < '1.13':
             mm.offset = offset
-        if unlink_on_gc_collect:
-            from ._memmapping_reducer import add_maybe_unlink_finalizer
-            add_maybe_unlink_finalizer(mm)
+
+        assert unlink_on_gc_collect is False
+        # if unlink_on_gc_collect:
+        #     from ._memmapping_reducer import add_maybe_unlink_finalizer
+        #     add_maybe_unlink_finalizer(mm)
         return mm
+
 except ImportError:
     def make_memmap(filename, dtype='uint8', mode='r+', offset=0,
                     shape=None, order='C', unlink_on_gc_collect=False):

@@ -2,7 +2,7 @@
 
 # numpy_pickle is not a drop-in replacement of pickle, as it takes
 # filenames instead of open files as arguments.
-from joblib import numpy_pickle_compat
+from funpy.joblib import numpy_pickle_compat
 
 
 def test_z_file(tmpdir):

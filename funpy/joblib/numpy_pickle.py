@@ -591,14 +591,15 @@ def _unpickle(fobj, filename="", mmap_mode=None):
         raise new_exc
     return obj
 
-
-def load_temporary_memmap(filename, mmap_mode, unlink_on_gc_collect):
-    from ._memmapping_reducer import JOBLIB_MMAPS, add_maybe_unlink_finalizer
-    obj = load(filename, mmap_mode)
-    JOBLIB_MMAPS.add(obj.filename)
-    if unlink_on_gc_collect:
-        add_maybe_unlink_finalizer(obj)
-    return obj
+#
+# def load_temporary_memmap(filename, mmap_mode, unlink_on_gc_collect):
+#     # Used by _memmapping!!
+#     from ._memmapping_reducer import JOBLIB_MMAPS, add_maybe_unlink_finalizer
+#     obj = load(filename, mmap_mode)
+#     JOBLIB_MMAPS.add(obj.filename)
+#     if unlink_on_gc_collect:
+#         add_maybe_unlink_finalizer(obj)
+#     return obj
 
 
 def load(filename, mmap_mode=None):

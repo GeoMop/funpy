@@ -1,5 +1,5 @@
-from joblib.compressor import BinaryZlibFile
-from joblib.testing import parametrize
+from funpy.joblib.compressor import BinaryZlibFile
+from funpy.joblib.testing import parametrize
 
 
 @parametrize('filename', ['test', u'test'])  # testing str and unicode names

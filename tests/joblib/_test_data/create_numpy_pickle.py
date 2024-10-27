@@ -12,7 +12,7 @@ try:
 except ImportError:
     np = None
 
-import joblib
+import funpy.joblib as joblib
 
 
 def get_joblib_version(joblib_version=joblib.__version__):

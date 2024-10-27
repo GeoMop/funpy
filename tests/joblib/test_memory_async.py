@@ -4,10 +4,10 @@ import shutil
 
 import pytest
 
-from joblib.memory import (AsyncMemorizedFunc, AsyncNotMemorizedFunc,
+from funpy.joblib.memory import (AsyncMemorizedFunc, AsyncNotMemorizedFunc,
                            MemorizedResult, Memory, NotMemorizedResult)
-from joblib.test.common import np, with_numpy
-from joblib.testing import raises
+from _test_common import np, with_numpy
+from funpy.joblib.testing import raises
 
 from .test_memory import (corrupt_single_cache_item,
                           monkeypatch_cached_func_warn)

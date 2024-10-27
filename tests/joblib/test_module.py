@@ -1,7 +1,7 @@
 import sys
 import joblib
-from joblib.testing import check_subprocess_call
-from joblib.test.common import with_multiprocessing
+from funpy.joblib.testing import check_subprocess_call
+from _test_common import with_multiprocessing
 
 
 def test_version():
@@ -44,7 +44,7 @@ def test_no_semaphore_tracker_on_import():
 def test_no_resource_tracker_on_import():
     code = """if True:
         import joblib
-        from joblib.externals.loky.backend import resource_tracker
+        from funpy.joblib.externals.loky.backend import resource_tracker
         # The following line would raise RuntimeError if the
         # start_method is already set.
         msg = "loky.resource_tracker has been spawned on import"

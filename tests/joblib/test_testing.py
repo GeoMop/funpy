@@ -1,7 +1,7 @@
 import sys
 import re
 
-from joblib.testing import raises, check_subprocess_call
+from funpy.joblib.testing import raises, check_subprocess_call
 
 
 def test_check_subprocess_call():

@@ -126,21 +126,18 @@ from .numpy_pickle import load
 
 from .compressor import register_compressor
 
-from .parallel import Parallel
-from .parallel import delayed
-from .parallel import cpu_count
-from .parallel import register_parallel_backend
-from .parallel import parallel_backend
-from .parallel import parallel_config
-from .parallel import effective_n_jobs
-from ._cloudpickle_wrapper import wrap_non_picklable_objects
+# from .parallel import Parallel
+# from .parallel import delayed
+# from .parallel import cpu_count
+# from .parallel import register_parallel_backend
+# from .parallel import parallel_backend
+# from .parallel import parallel_config
+# from .parallel import effective_n_jobs
 
 
 __all__ = ['Memory', 'MemorizedResult', 'PrintTime', 'Logger', 'hash', 'dump',
-           'load', 'Parallel', 'delayed', 'cpu_count', 'effective_n_jobs',
-           'register_parallel_backend', 'parallel_backend', 'expires_after',
-           'register_store_backend', 'register_compressor',
-           'wrap_non_picklable_objects', 'parallel_config']
+           'load',  'expires_after',
+           'register_store_backend', 'register_compressor']
 
 
 # Workaround issue discovered in intel-openmp 2019.5:

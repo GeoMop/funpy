@@ -21,20 +21,20 @@ import textwrap
 
 import pytest
 
-from joblib.memory import Memory
-from joblib.memory import expires_after
-from joblib.memory import MemorizedFunc, NotMemorizedFunc
-from joblib.memory import MemorizedResult, NotMemorizedResult
-from joblib.memory import _FUNCTION_HASHES
-from joblib.memory import register_store_backend, _STORE_BACKENDS
-from joblib.memory import _build_func_identifier, _store_backend_factory
-from joblib.memory import JobLibCollisionWarning
-from joblib.parallel import Parallel, delayed
-from joblib._store_backends import StoreBackendBase, FileSystemStoreBackend
-from joblib.test.common import with_numpy, np
-from joblib.test.common import with_multiprocessing
-from joblib.testing import parametrize, raises, warns
-from joblib.hashing import hash
+from funpy.joblib.memory import Memory
+from funpy.joblib.memory import expires_after
+from funpy.joblib.memory import MemorizedFunc, NotMemorizedFunc
+from funpy.joblib.memory import MemorizedResult, NotMemorizedResult
+from funpy.joblib.memory import _FUNCTION_HASHES
+from funpy.joblib.memory import register_store_backend, _STORE_BACKENDS
+from funpy.joblib.memory import _build_func_identifier, _store_backend_factory
+from funpy.joblib.memory import JobLibCollisionWarning
+#from funpy.joblib.parallel import Parallel, delayed
+from funpy.joblib._store_backends import StoreBackendBase, FileSystemStoreBackend
+from _test_common import with_numpy, np
+from _test_common import with_multiprocessing, with_parallel
+from funpy.joblib.testing import parametrize, raises, warns
+from funpy.joblib.hashing import hash
 
 
 ###############################################################################
@@ -126,7 +126,7 @@ def test_memory_integration(tmpdir):
     memory = Memory(location=tmpdir.strpath, verbose=0)
     memory.cache(f)(1)
 
-
+@with_parallel
 @parametrize("call_before_reducing", [True, False])
 def test_parallel_call_cached_function_defined_in_jupyter(
     tmpdir, call_before_reducing
@@ -1074,7 +1074,7 @@ def fast_func_with_conditional_complex_output(complex_output=True):
     complex_obj = {str(i): i for i in range(int(1e5))}
     return complex_obj if complex_output else 'simple output'
 
-
+@with_parallel
 @with_multiprocessing
 def test_cached_function_race_condition_when_persisting_output(tmpdir, capfd):
     # Test race condition where multiple processes are writing into
@@ -1094,7 +1094,7 @@ def test_cached_function_race_condition_when_persisting_output(tmpdir, capfd):
     assert exception_msg not in stdout
     assert exception_msg not in stderr
 
-
+@with_parallel
 @with_multiprocessing
 def test_cached_function_race_condition_when_persisting_output_2(tmpdir,
                                                                  capfd):

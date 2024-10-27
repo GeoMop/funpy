@@ -18,11 +18,11 @@ import random
 from concurrent.futures import ProcessPoolExecutor
 from decimal import Decimal
 
-from joblib.hashing import hash
-from joblib.func_inspect import filter_args
-from joblib.memory import Memory
-from joblib.testing import raises, skipif, fixture, parametrize
-from joblib.test.common import np, with_numpy
+from funpy.joblib.hashing import hash
+from funpy.joblib.func_inspect import filter_args
+from funpy.joblib.memory import Memory
+from funpy.joblib.testing import raises, skipif, fixture, parametrize
+from _test_common import np, with_numpy
 
 
 def unicode(s):

@@ -7,6 +7,7 @@ COMPRESS_METHODS="zlib gzip bz2 xz lzma lz4"
 for i in $CONDA_ENVS
 do
     . activate $i
+    pip install ../../..
     # Generate non compressed pickles.
     python create_numpy_pickle.py
 

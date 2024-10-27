@@ -7,7 +7,7 @@ Test the logger module.
 # License: BSD Style, 3 clauses.
 import re
 
-from joblib.logger import PrintTime
+from funpy.joblib.logger import PrintTime
 
 
 def test_print_time(tmpdir, capsys):

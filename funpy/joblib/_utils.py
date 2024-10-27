@@ -5,11 +5,6 @@ from dataclasses import dataclass
 import operator as op
 
 
-from ._multiprocessing_helpers import mp
-
-if mp is not None:
-    from .externals.loky.process_executor import _ExceptionWithTraceback
-
 
 # supported operators
 operators = {
