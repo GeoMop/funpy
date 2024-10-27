@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "funpy"
+version = "0.0.1"    # test version info
+authors = [
+    {name = "Jan Březina", email = "jan.brezina@tul.cz"},
+]
+description = "Tools for functional workflows in Python."
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = ["functional programming", "workflows", "persistent memoization", "pure functions"]
+license = {text = "GNU-3"}
+dependencies = ["attrs", "joblib", "cloudpickle"]
+#dynamic = ["version"]
+
+[tool.setuptools]
+#package-dir = {"" = ""}
+packages = ["funpy"]
+
+
+# TODO: make joblib and redis optional dependencies
+#[project.optional-dependencies]
+#pdf = ["ReportLab>=1.2", "RXP"]
+#rest = ["docutils>=0.3", "pack ==1.1, ==1.3"]
+
